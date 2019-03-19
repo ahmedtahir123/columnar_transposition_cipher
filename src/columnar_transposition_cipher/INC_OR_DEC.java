@@ -16,56 +16,94 @@ import java.util.Set;
  */
 class INC_OR_DEC {
 
-    
-        String incripted = "";
+    String incripted = "";
+
     String Incrip(ArrayList<String> A1, ArrayList<String> A2) {
-        int s=(A1.size()/A2.size()+2);
-        int k=0;
-     String arr[][] = new String[s][A2.size()];
+        int s = (A1.size() / A2.size() + 2);
+        int k = 0;
+        String arr[][] = new String[s][A2.size()];
         for (int i = 0; i < A2.size(); i++) {
-                  arr[0][i]=Integer.toString(A2.get(i).hashCode()-97);
+            arr[0][i] = Integer.toString(A2.get(i).hashCode() - 97);
 
         }
         for (int i = 1; i < s; i++) {
             for (int j = 0; j < A2.size(); j++) {
-                if(k>=A1.size()){
-                       arr[i][j]="X";
-    k++;
-                }else{
-                arr[i][j]=A1.get(k);
-                k++;
-            }
-            }
-        }
-        
-int c=0;  
-        for (int i = 0; i < A2.size(); i++) {
-        int min=A2.get(0).hashCode()-97; 
-        for (int j = 0; j < A2.size(); j++) {
-            if(min>=A2.get(j).hashCode()-97 && A2.get(j).hashCode()-97!=-49){
-                    min=A2.get(j).hashCode()-97;
-                c=j;
+                if (k >= A1.size()) {
+                    arr[i][j] = "X";
+                    k++;
+                } else {
+                    arr[i][j] = A1.get(k);
+                    k++;
+                }
             }
         }
-     
-                           A2.set(c, "0");
-                   print(c,arr,A2);
 
-       }
+        int c = 0;
+        for (int i = 0; i < A2.size(); i++) {
+            int min = A2.get(0).hashCode() - 97;
+            for (int j = 0; j < A2.size(); j++) {
+                if (min >= A2.get(j).hashCode() - 97 && A2.get(j).hashCode() - 97 != -49) {
+                    min = A2.get(j).hashCode() - 97;
+                    c = j;
+                }
+            }
+
+            A2.set(c, "0");
+            print(c, arr, A2);
+
+        }
         return "";
     }
-    void print(int c, String[][] arr, ArrayList<String> A2){
-        for (int i = 1; i < A2.size(); i++) {
+
+    void print(int c, String[][] arr, ArrayList<String> A2) {
+        for (int i = 1; i < A2.size()+1; i++) {
             System.out.print(arr[i][c]);
         }
     }
+         int q=0;
+
+     void fillingArray(int c, String[][] arr, ArrayList<String> A2,ArrayList<String> A1) {
+         for (int i = 1; i < A2.size()+1; i++) {
+             arr[i][c]=A1.get(q);
+             q++;
+         }
+     
+     }
     
+
     String Decrip(ArrayList<String> A1, ArrayList<String> A2) {
-       
-        
-        
-        return null;
-    
+                int s = (A1.size() / A2.size() + 2);
+                System.out.println(A1.size());
+                System.out.println(A2.size());
+                String arr[][] = new String[s][A2.size()];
+              
+                 int c = 0;
+        for (int i = 0; i < A2.size(); i++) {
+            int min = A2.get(0).hashCode() - 97;
+            for (int j = 0; j < A2.size(); j++) {
+                if (min >= A2.get(j).hashCode() - 97 && A2.get(j).hashCode() - 97 != -49) {
+                    min = A2.get(j).hashCode() - 97;
+                    c = j;
+                }
+            }
+
+            A2.set(c, "0");
+            
+            fillingArray(c, arr, A2,A1);
+                
+                
+
+
     }
-    
+           
+
+        for (int i = 1; i < (A1.size() / A2.size() + 1); i++) {
+            for (int j = 0; j < A2.size(); j++) {
+                System.out.print(arr[i][j]);
+            }
+        }
+        return "";
+
+    }
 }
+    
